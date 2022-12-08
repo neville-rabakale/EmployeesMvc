@@ -1,0 +1,27 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using EmployeesMvc.Models
+@model Employee
+
+<html>
+<head>
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <h1> Create Employee</h1>
+
+    <form asp-controller="Emloyees" asp-action="Create" method="post">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="@Model.Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+        <br />
+        <input type="submit" asp-controller="Employees" asp-action="Create" />
+    </form>
+
+    <div asp-validation-summary="All"></div>
+</body>
+</html>

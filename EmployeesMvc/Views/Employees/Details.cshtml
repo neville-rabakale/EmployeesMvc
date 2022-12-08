@@ -1,0 +1,18 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using EmployeesMvc.Models
+@model Employee
+
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <h1>Employees</h1>
+
+   <p>Name = @Model.Name</p>
+   
+   <p>Email = @Model.Email</p>
+    <a asp-controller="Employees" asp-action="Create" >Create employee</a>
+</body>
+</html>
