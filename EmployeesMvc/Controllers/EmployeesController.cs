@@ -6,9 +6,9 @@ namespace EmployeesMvc.Controllers
     public class EmployeesController : Controller
     {
         DataService service;
-        public EmployeesController()
+        public EmployeesController(DataService service)
         {
-            service= new DataService();
+            this.service= service;
         }
 
         [HttpGet("")]
