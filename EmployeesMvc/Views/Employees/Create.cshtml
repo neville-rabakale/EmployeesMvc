@@ -1,27 +1,26 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@using EmployeesMvc.Models
-@model Employee
+﻿@model Employee
 
-<html>
-<head>
-    <title>Create Employee</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-</head>
-<body>
-    <h1> Create Employee</h1>
+
+<h1> Create Employee</h1>
+<div class="col-3">
 
     <form asp-controller="Emloyees" asp-action="Create" method="post">
         <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
 
-        <label asp-for="@Model.Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+        <label asp-for="@Model.Email" ></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
         <br />
-        <input type="submit" asp-controller="Employees" asp-action="Create" >
+        <button type="submit" class="btn btn-primary" >SUBMIT</button>
     </form>
+</div>
 
-    <div asp-validation-summary="All"></div>
-</body>
-</html>
+<div asp-validation-summary="All"></div>
+   
+@section scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}
