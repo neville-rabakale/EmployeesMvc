@@ -1,4 +1,5 @@
 ﻿using EmployeesMvc.Models;
+using EmployeesMvc.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeesMvc.Controllers
