@@ -40,5 +40,21 @@ namespace EmployeesMvc.Models
         {
             return context.Employees.Single(o => o.Id == id);
         }
+
+        public void AddCompany(Company company)
+        {
+            context.Companies.Add(company);
+            context.SaveChanges();
+        }
+
+        public Company[] GetAllCompanies()
+        {
+            return context.Companies.ToArray();
+        }
+
+        public Company GetCompanyById(int id)
+        {
+            return context.Companies.Single(o => o.Id == id);
+        }
     }
 }

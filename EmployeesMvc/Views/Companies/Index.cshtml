@@ -1,0 +1,17 @@
+﻿@model Company[]
+
+
+
+<h1>Companies List</h1>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a asp-controller="Companies" asp-action="Details" asp-route-id="@item.Id">Company Name: @item.CompanyName</a>
+        </li>
+    }
+</ul>
+<a asp-controller="Companies" asp-action="Create" class="btn btn-primary">Create company</a>
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a>
+

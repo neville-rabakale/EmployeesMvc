@@ -1,0 +1,1 @@
+Scaffold-DbContext -Connection name=DefaultConnection -Provider Microsoft.EntityFrameworkCore.SqlServer -Project "Acme" -OutputDir "Models/Entities" -Context "AcmeContext" -NoOnConfiguring -Force

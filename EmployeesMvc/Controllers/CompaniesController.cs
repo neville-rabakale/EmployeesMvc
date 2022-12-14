@@ -4,43 +4,43 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeesMvc.Controllers
 {
-    public class EmployeesController : Controller
+    public class CompaniesController : Controller
     {
         DataService service;
-        public EmployeesController(DataService service)
+        public CompaniesController(DataService service)
         {
             this.service= service;
         }
 
-      
-        [HttpGet("Employees/index")]
+        [HttpGet("Company")]
+        [HttpGet("Company/index")]
         public IActionResult Index()
         {
-            var model = service.GetAllEmployees();
+            var model = service.GetAllCompanies();
             return View(model);
         }
 
-        [HttpGet("Employees/create")]
+        [HttpGet("Company/create")]
         public IActionResult Create()
         {   
             return View();
         }
 
-        [HttpPost("Employees/create")]
-        public IActionResult Create(Employee employee) 
+        [HttpPost("Company/create")]
+        public IActionResult Create(Company company) 
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
-            service.AddEmployee(employee);
+            service.AddCompany(company);
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet("Employees/details/{id}")]
+        [HttpGet("Company/details/{id}")]
         public IActionResult Details( int id)
         {
-            var employee = service.GetEmployeeById(id);
+            var employee = service.GetCompanyById(id);
             return View(employee);
         }
 

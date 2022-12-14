@@ -11,10 +11,22 @@ public partial class EmployeeContext : DbContext
     {
     }
 
+    public virtual DbSet<Company> Companies { get; set; }
+
     public virtual DbSet<Employee> Employees { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Company>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Companie__3214EC07C11BDBFB");
+
+            entity.Property(e => e.CompanyName)
+                .HasMaxLength(10)
+                .IsFixedLength();
+            entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
+        });
+
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC07CB44BE3B");
