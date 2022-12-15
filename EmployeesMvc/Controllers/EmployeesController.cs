@@ -1,5 +1,6 @@
 ﻿using EmployeesMvc.Models;
 using EmployeesMvc.Models.Entities;
+using EmployeesMvc.Views.Employees;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeesMvc.Controllers
@@ -27,20 +28,20 @@ namespace EmployeesMvc.Controllers
         }
 
         [HttpPost("Employees/create")]
-        public IActionResult Create(Employee employee) 
+        public IActionResult Create(CreateVM model) 
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
-            service.AddEmployee(employee);
+            service.AddEmployee(model);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet("Employees/details/{id}")]
         public IActionResult Details( int id)
         {
-            var employee = service.GetEmployeeById(id);
+            var employee = service.GetEmployeeDetails(id);
             return View(employee);
         }
 

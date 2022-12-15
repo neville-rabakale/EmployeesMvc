@@ -1,4 +1,4 @@
-﻿@model Employee[]
+﻿@model IndexVM[]
 
 
 
@@ -8,7 +8,7 @@
     @foreach (var item in Model)
     {
         <li>
-            <a asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Name: @item.Name Email Address: @item.Email</a>
+            <a asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id" class="@(item.ShowAsHighlighted ? "text-danger" : "text")">Name: @item.Name Email Address: @item.Email</a>
         </li>
     }
 </ul>

@@ -1,4 +1,4 @@
-﻿@model Employee
+﻿@model CreateVM
 
 
 <h1> Create Employee</h1>
@@ -12,6 +12,10 @@
         <label asp-for="@Model.Email" ></label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="@Model.BotCheck">What is 2 + 2</label>
+        <input asp-for="BotCheck" class="form-control" />
+        <span asp-validation-for="BotCheck" class="text-danger"></span>
         <br />
         <button type="submit" class="btn btn-primary" >SUBMIT</button>
     </form>
@@ -21,8 +25,8 @@
 
 <div asp-validation-summary="All"></div>
    
-@section scripts{
+@*@section scripts{
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
-}
+}*@

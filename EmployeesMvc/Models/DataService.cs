@@ -1,4 +1,6 @@
 ﻿using EmployeesMvc.Models.Entities;
+using EmployeesMvc.Views.Employees;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 
 namespace EmployeesMvc.Models
@@ -18,9 +20,13 @@ namespace EmployeesMvc.Models
             this.context = context;
         }
 
-        public void AddEmployee(Employee employee)
+        public void AddEmployee(CreateVM model)
         {
-            context.Employees.Add(employee);
+            context.Employees.Add(new Employee
+            {
+                Name = model.Name,
+                Email = model.Email
+            });
             context.SaveChanges();
         }
 
@@ -31,15 +37,32 @@ namespace EmployeesMvc.Models
             string fileName = "EmployeeData.js";
             File.WriteAllText(fileName, json);
         }
-        public Employee[] GetAllEmployees()
+        public IndexVM[] GetAllEmployees()
         {
-            return context.Employees.ToArray();
+            return context.Employees
+                .Select(o => new IndexVM
+                {
+                    Id = o.Id,
+                    Name = o.Name,
+                    Email = o.Email,
+                    ShowAsHighlighted = o.Email.ToLower().StartsWith("admin")
+                })
+                .ToArray();
         }
 
-        public Employee GetEmployeeById(int id)
+        public DetailsVM GetEmployeeDetails(int id)
         {
-            return context.Employees.Single(o => o.Id == id);
+            return context.Employees
+                .Where(o => o.Id == id)
+                .Select(o => new DetailsVM
+                {              
+                    Name = o.Name,
+                    Email = o.Email,
+                })
+                .Single();
+
         }
+
 
         public void AddCompany(Company company)
         {
@@ -49,7 +72,8 @@ namespace EmployeesMvc.Models
 
         public Company[] GetAllCompanies()
         {
-            return context.Companies.ToArray();
+            return context.Companies
+                .ToArray();
         }
 
         public Company GetCompanyById(int id)
